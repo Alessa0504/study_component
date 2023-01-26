@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "study_component"
 include ':app'
+include ':modulesCore:main'
+include ':modulesBase:libBase'
+include ':modulesPublic:libPay'
+include ':modulesCore:login'

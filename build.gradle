@@ -8,3 +8,32 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    isDebug = false // 当它为true时，调试模式，组件可以单独运行。如果是false，正式编译打包的模式
+    android = [
+            compileSdkVersion: 33,
+            minSdkVersion    : 21,
+            targetSdkVersion : 33,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    // 两个需要切换成Application的module
+    applicationId = [
+            "app"  : "com.example.study_component",   // 一般是包名，因为重复可以覆盖(一个包下同一文件只能一个)
+            "main" : "com.example.component",
+            "login": "com.example.login"
+    ]
+    // sdk中的library
+    library = [
+            "ktx"             : "androidx.core:core-ktx:1.7.0",
+            "appcompat"       : "androidx.appcompat:appcompat:1.6.0",
+            "material"        : "com.google.android.material:material:1.7.0",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.1.4"
+    ]
+    // 第三方library
+    libARouter = "com.alibaba:arouter-api:1.5.1"
+    libARouterCompiler = "com.alibaba:arouter-compiler:1.5.1"
+    libGson = "com.google.code.gson:gson:2.8.6"
+}

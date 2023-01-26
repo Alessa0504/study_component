@@ -1,0 +1,40 @@
+def cfg = rootProject.ext
+
+apply plugin: 'com.android.library'   // libBase始终是library
+apply plugin : 'org.jetbrains.kotlin.android'
+
+android {
+    compileSdk cfg.android.compileSdkVersion
+
+    defaultConfig {
+        minSdk cfg.android.minSdkVersion
+        targetSdk cfg.android.targetSdkVersion
+        versionCode cfg.android.versionCode
+        versionName cfg.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(':modulesBase:libBase')   // implementation不向上传递，防止业务组件:moduleCore:main又依赖libBase又依赖libPay发生重复依赖
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
