@@ -40,6 +40,7 @@ dependencies {
     api cfg.library.appcompat
     api cfg.library.material
     api cfg.library.constraintlayout
+    api project(":modulesBase:libRouter")   // 引入Router
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
