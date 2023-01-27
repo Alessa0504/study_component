@@ -7,6 +7,7 @@ if (cfg.isDebug) {   //是debug模式才是application，不是debug则为librar
     apply plugin: 'com.android.library'
 }
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdk cfg.android.compileSdkVersion
@@ -21,6 +22,13 @@ android {
         versionName cfg.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 引入注解处理器后需添加AROUTER_MODULE_NAME
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.name)
+            }
+        }
     }
 
     buildTypes {
@@ -53,6 +61,7 @@ dependencies {
     // 业务组件会依赖基础组件，所以直接引入基础组件
     // implementation和api的区别: implementation依赖不可以向上级传递，api可传递
     implementation project(":modulesBase:libBase")
+    kapt cfg.libARouterCompiler   // 需要用到ARouter的业务组件需要引入注解处理器
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

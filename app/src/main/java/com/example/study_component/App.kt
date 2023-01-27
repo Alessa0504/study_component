@@ -1,6 +1,7 @@
 package com.example.study_component
 
 import android.app.Application
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.component.MainActivity
 import com.example.librouter.Router
 import com.example.login.LoginActivity
@@ -13,8 +14,13 @@ import com.example.login.LoginActivity
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        // 注册各业务组件
-        Router.register("/main/MainActivity", MainActivity::class.java)
-        Router.register("/login/LoginActivity", LoginActivity::class.java)
+        // Router -注册各业务组件
+        /*Router.register("/main/MainActivity", MainActivity::class.java)
+        Router.register("/login/LoginActivity", LoginActivity::class.java)*/
+
+        // ARouter
+        ARouter.openLog()  // print log
+        ARouter.openDebug()  // debug log
+        ARouter.init(this)   // 初始化ARouter
     }
 }

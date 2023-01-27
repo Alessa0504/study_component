@@ -33,7 +33,7 @@ ext {
             "constraintlayout": "androidx.constraintlayout:constraintlayout:2.1.4"
     ]
     // 第三方library
-    libARouter = "com.alibaba:arouter-api:1.5.1"
-    libARouterCompiler = "com.alibaba:arouter-compiler:1.5.1"
+    libARouter = "com.alibaba:arouter-api:1.5.2"
+    libARouterCompiler = "com.alibaba:arouter-compiler:1.5.2"
     libGson = "com.google.code.gson:gson:2.8.6"
 }

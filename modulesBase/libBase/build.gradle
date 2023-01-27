@@ -40,7 +40,9 @@ dependencies {
     api cfg.library.appcompat
     api cfg.library.material
     api cfg.library.constraintlayout
-    api project(":modulesBase:libRouter")   // 引入Router
+    api cfg.libARouter   // 引入ARouter,通过build.gradle(project)
+
+    api project(":modulesBase:libRouter")   // 引入自己实现的Router
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
