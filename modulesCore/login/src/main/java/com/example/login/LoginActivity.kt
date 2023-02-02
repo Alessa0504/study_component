@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
     // 接收从StartActivity传递过来的数据
     @Autowired(name = "key2")   //变量名str改为key2
-    @JvmField
+    @JvmField     //使Kotlin编译器不再对该字段生成getter/setter并将其作为公开字段
     var str: String? = null
 
     @Autowired

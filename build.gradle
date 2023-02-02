@@ -19,7 +19,7 @@ ext {
             versionName      : "1.0"
     ]
 
-    // 两个需要切换成Application的module
+    // 3个需要切换成Application的module
     applicationId = [
             "app"  : "com.example.study_component",   // 一般是包名，因为重复可以覆盖(一个包下同一文件只能一个)
             "main" : "com.example.component",
