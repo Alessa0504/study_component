@@ -10,7 +10,7 @@ import android.content.Intent
  */
 object Router {
     // groupMap = hashMapOf<groupName, HashMap<path, clazz>>()
-    val groupMap = hashMapOf<String, HashMap<String, Class<*>>>()
+    val groupMap = hashMapOf<String, HashMap<String, Class<*>>>()   //不会造成内存泄漏，因为存的是Activity类对象 不是Activity实例
     val routeMap = hashMapOf<String, Class<*>>()
 
     /**
@@ -27,9 +27,10 @@ object Router {
             if (groupMap.containsKey(groupName)) {
                 group = groupMap[groupName]
             }
+            // group不为空，更新path对应的class
             group?.let {
                 it[routeName] = clazz
-            } ?: run {
+            } ?: run {   //为空则添 加group
                 group = hashMapOf()
                 group!![routeName] = clazz
                 groupMap[groupName] = group!!
